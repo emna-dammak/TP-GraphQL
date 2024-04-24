@@ -4,7 +4,7 @@ USER
 }
 
 type CV{
-id: Int!
+id: String!
 name: String!
 age: Int!
 job: String!
@@ -13,13 +13,13 @@ user: User!
 }
 
 type Skill {
-id: Int!
+id: String!
 designation: String!
 cvs: [CV!]!
 }
 
 type User {
-id: Int!
+id: String!
 name: String!
 email: String!
 role: Role!
