@@ -10,6 +10,12 @@ type Query {
   getCvUsers(cvid: ID!): User!
 }
 
+type Mutation {
+  addCv(cvAddInput: CvAddInput): Cv!
+  updateCv(id: Int!, cvUpdateInput: CvUpdateInput): Cv!
+  deleteCv(id: Int!): Cv!
+}
+
 type CV {
   id: String!
   name: String!
@@ -31,4 +37,21 @@ type User {
   email: String!
   role: Role!
   cvs: [CV!]!
+}
+
+input CvInput {
+    name: String!
+    age: Int!
+    job: String!
+    userId: String!
+    skillIds: [Int!]!
+}
+
+input CvUpdateInput {
+    id: String!
+    name: String
+    age: Int
+    job: String
+    userId: String
+    skillIds: [Int!]
 }
