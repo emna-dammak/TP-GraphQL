@@ -11,4 +11,19 @@ export const Query = {
                 return cv;
             }
         },
+        getCvUsers: (parent : any, { cvid } : any, { db } : any, info : any) => {
+            return db.users.find((user : any) => user.id === cvid);
+        },
+        getCvSkills: (parent : any, { cvid } : any, { db } : any, info : any) => {
+            const myElemts = db.cv_skill.filter((elmt: any) => elmt.id_cv === cvid);
+            const mySkills = [];
+            for (let i = 0; i < myElemts.length; i++) {
+                const skillId = myElemts[i].id_skill;
+                const skill = db.skills.find((skill : any) => skill.id === skillId);
+                if (skill) {
+                    mySkills.push(skill);
+                }
+            }
+            return mySkills;
+        }
     };

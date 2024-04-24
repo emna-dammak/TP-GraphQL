@@ -6,6 +6,8 @@ type Query {
   hello: String
   getCvs: [CV]!
   getCvById(cvId: String): CV!
+  getCvSkills(cvid: ID!): [Skill!]!
+  getCvUsers(cvid: ID!): User!
 }
 
 type CV {
