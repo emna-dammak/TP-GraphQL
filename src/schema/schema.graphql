@@ -55,3 +55,15 @@ input CvUpdateInput {
     userId: String
     skillIds: [Int!]
 }
+type Subscription {
+    cvUpdated: CvSubscriptionPayload!
+}
+type CvSubscriptionPayload {
+    Mutation: MutationOperationType!
+    cv: CV!
+}
+enum MutationOperationType{
+  UPDATE
+  DELETE
+  ADD
+}
