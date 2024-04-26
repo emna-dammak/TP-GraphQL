@@ -6,14 +6,14 @@ type Query {
   hello: String
   getCvs: [CV]!
   getCvById(cvId: String): CV!
-  getCvSkills(cvid: ID!): [Skill!]!
-  getCvUsers(cvid: ID!): User!
+  getCvSkills(cvid: String!): [Skill!]!
+  getCvUsers(cvid: String!): User!
 }
 
 type Mutation {
-  addCv(cvAddInput: CvAddInput): Cv!
-  updateCv(id: Int!, cvUpdateInput: CvUpdateInput): Cv!
-  deleteCv(id: Int!): Cv!
+  addCv(cvAddInput: CvAddInput): CV!
+  updateCv(id: String!, cvUpdateInput: CvUpdateInput): CV!
+  deleteCv(id: String!): CV!
 }
 
 type CV {
@@ -39,12 +39,12 @@ type User {
   cvs: [CV!]!
 }
 
-input CvInput {
+input CvAddInput {
     name: String!
     age: Int!
     job: String!
     userId: String!
-    skillIds: [Int!]!
+    skillIds: [String!]!
 }
 
 input CvUpdateInput {
@@ -53,5 +53,5 @@ input CvUpdateInput {
     age: Int
     job: String
     userId: String
-    skillIds: [Int!]
+    skillIds: [String!]
 }

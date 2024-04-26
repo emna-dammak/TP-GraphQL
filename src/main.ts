@@ -3,6 +3,7 @@ import { createServer } from "node:http";
 import { db } from "./db/db";
 import fs from "fs";
 import { Query } from "./resolvers/Query";
+import { Mutation } from "./resolvers/Mutation";
 
 const yoga = createYoga({
     schema: createSchema({
@@ -11,7 +12,8 @@ const yoga = createYoga({
         "utf-8"
       ),
       resolvers: {
-        Query
+        Query, 
+        Mutation
       },
     }),
 
