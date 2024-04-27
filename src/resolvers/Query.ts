@@ -12,7 +12,8 @@ export const Query = {
     }
   },
   getCvUsers: (parent: any, { cvid }: any, { db }: any, info: any) => {
-    return db.users.find((user: any) => user.id === cvid);
+    const userId = db.cvs.find((cv: any) => cv.id === cvid).owner.toString();
+    return db.users.find((user: any) => user.id === userId);
   },
   getCvSkills: (parent: any, { cvid }: any, { db }: any, info: any) => {
     const myElemts = db.cv_skill.filter((elmt: any) => elmt.id_cv === cvid);
