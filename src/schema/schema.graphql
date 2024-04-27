@@ -8,12 +8,22 @@ type Query {
   getCvById(cvId: String): CV!
   getCvSkills(cvid: String!): [Skill!]!
   getCvUsers(cvid: String!): User!
+  
+  info: String!
+  getAllCVs: [CV!]!
+
 }
+scalar JSON
 
 type Mutation {
   addCv(cvAddInput: CvAddInput): CV!
   updateCv(id: String!, cvUpdateInput: CvUpdateInput): CV!
   deleteCv(id: String!): CV!
+
+  createCv(data:JSON): CV!
+  updateeCv(id: String!, data:JSON): CV!
+  deleteeCv(id: String!): CV!
+
 }
 
 type CV {

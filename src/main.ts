@@ -1,21 +1,23 @@
 import { createPubSub, createSchema, createYoga } from "graphql-yoga";
 import { createServer } from "node:http";
-import { db } from "./db/db";
 import fs from "fs";
-import { Query } from "./resolvers/Query";
+import { resolvers } from "./schema";
+import { createContext } from "./context";
+
 
 const pubSub = createPubSub();
 const yoga = createYoga({
   schema: createSchema({
     typeDefs: fs.readFileSync("src/schema/schema.graphql", "utf-8"),
     resolvers: {
-      Query,
-      Mutation,
+      Query: resolvers.Query,
+      CV: resolvers.CV,
+      Mutation: resolvers.Mutation
     },
   }),
 
 
-  context: { db ,pubSub},
+  context: createContext,
 });
 
 

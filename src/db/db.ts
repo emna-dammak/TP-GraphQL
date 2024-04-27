@@ -2,6 +2,7 @@ enum Role {
   ADMIN = "ADMIN",
   USER = "USER",
 }
+
 interface CV {
   id: string;
   name: string;

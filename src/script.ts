@@ -60,33 +60,5 @@ async function createUser(data: any) {
   });
 }
 
-async function main() {
-  /*const user= await createUser({ 
-      id: "12345678",
-      name: "John Doe",
-      email: "john@example.com",
-      role: "USER" 
-  });
-
-  const newCv = await createCv({
-    id: "2",
-    name: "John Doe",
-    age: 30,
-    job: "Software Engineer",
-    userId: "12345678"
-  });
-*/
-
-  //const updatedCv = await updateCv("2", {name : "Mohamed Ali"});
-
-  console.log(await getAllCVs());
-  console.log(await getCvWithSkillsAndUser("1"));
-
-}
-
-main()
-  .finally(async () => {
-    await prisma.$disconnect();
-  });
 
 export { getAllCVs, getCvById, createCv, updateCv, deleteCv };
