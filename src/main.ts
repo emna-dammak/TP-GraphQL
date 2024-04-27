@@ -4,6 +4,7 @@ import { db } from "./db/db";
 import fs from "fs";
 import { Query } from "./resolvers/Query";
 import { Mutation } from "./resolvers/Mutation";
+
 const pubSub = createPubSub();
 const yoga = createYoga({
   schema: createSchema({
@@ -13,6 +14,7 @@ const yoga = createYoga({
       Mutation,
     },
   }),
+
 
   context: { db ,pubSub},
 });

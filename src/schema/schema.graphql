@@ -6,8 +6,8 @@ type Query {
   hello: String
   getCvs: [CV]!
   getCvById(cvId: String): CV!
-  getCvSkills(cvid: ID!): [Skill!]!
-  getCvUsers(cvid: ID!): User!
+  getCvSkills(cvid: String!): [Skill!]!
+  getCvUsers(cvid: String!): User!
 }
 
 type Mutation {
@@ -40,12 +40,13 @@ type User {
 }
 
 input CvAddInput {
-  name: String!
-  age: Int!
-  job: String!
-  userId: String!
-  skillIds: [String!]!
+    name: String!
+    age: Int!
+    job: String!
+    userId: String!
+    skillIds: [String!]!
 }
+
 
 input CvUpdateInput {
   name: String
@@ -67,3 +68,4 @@ enum MutationOperationType{
   DELETE
   ADD
 }
+
