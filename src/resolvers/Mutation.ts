@@ -2,7 +2,7 @@ import { GraphQLError } from "graphql";
 
 export const Mutation = {
 
-    addCv: (parent : any, args : any, { db } : any, info : any) => {
+    addCv: (parent : any, args : any, { db,pubSub } : any, info : any) => {
         const id = db.cvs.length + 1;
         const { name, age, job, skillIds, userId } = args.cvAddInput;
         console.log(args.cvAddInput);
@@ -21,16 +21,17 @@ export const Mutation = {
             user,
         };
         db.cvs.push(cv);
+        pubSub.publish("newCV",{cv})
         console.log(cv);
         return cv;
     },
-}
+
 
 
   updateCv: (
     parent: any,
     { id, cvUpdateInput }: any,
-    { db }: any,
+    { db ,pubSub}: any,
     infos: any
   ) => {
     console.log(id, cvUpdateInput);
@@ -85,15 +86,16 @@ export const Mutation = {
       cv[key] = cvUpdateInput[key];
     }
     cv.user = db.users.find((user: any) => cvUpdateInput.owner == user.id);
-
+    pubSub.publish("updateCv",{cv})
     return cv;
   },
-  deleteCv: (parent: any, { id }: any, { db }: any, info: any) => {
+  deleteCv: (parent: any, { id }: any, { db ,pubSub}: any, info: any) => {
     const indexCv = db.cvs.findIndex((cv: any) => cv.id === id);
     if (indexCv === -1) {
       throw new GraphQLError("cv innexistant !");
     } else {
       const [cv] = db.cvs.splice(indexCv, 1);
+      pubSub.publish("deletedCv",cv);
       return cv;
     }
   },
