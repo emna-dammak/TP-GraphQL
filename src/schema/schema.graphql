@@ -11,9 +11,9 @@ type Query {
 }
 
 type Mutation {
-  addCv(cvAddInput: CvAddInput): Cv!
-  updateCv(id: Int!, cvUpdateInput: CvUpdateInput): Cv!
-  deleteCv(id: Int!): Cv!
+  addCv(cvAddInput: CvAddInput): CV!
+  updateCv(id: String!, cvUpdateInput: CvUpdateInput): CV!
+  deleteCv(id: String!): CV!
 }
 
 type CV {
@@ -21,14 +21,14 @@ type CV {
   name: String!
   age: Int!
   job: String!
-  skills: [Skill!]!
-  user: User!
+  skills: [Skill!]
+  user: User
 }
 
 type Skill {
   id: String!
   designation: String!
-  cvs: [CV!]!
+  cvs: [CV!]
 }
 
 type User {
@@ -36,25 +36,25 @@ type User {
   name: String!
   email: String!
   role: Role!
-  cvs: [CV!]!
+  cvs: [CV!]
 }
 
-input CvInput {
-    name: String!
-    age: Int!
-    job: String!
-    userId: String!
-    skillIds: [Int!]!
+input CvAddInput {
+  name: String!
+  age: Int!
+  job: String!
+  userId: String!
+  skillIds: [String!]!
 }
 
 input CvUpdateInput {
-    id: String!
-    name: String
-    age: Int
-    job: String
-    userId: String
-    skillIds: [Int!]
+  name: String
+  age: Int
+  job: String
+  owner: String
+  skillIds: [String!]
 }
+
 type Subscription {
     cvUpdated: CvSubscriptionPayload!
 }
