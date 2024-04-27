@@ -1,26 +1,11 @@
 export const Subscription = {
-    newCv: {
-      subscribe: (parent:any, args:any, { pubSub }:any, info:any) => {
-        return pubSub.subscribe("newCv");
-      },
-      resolve: (payload:any) => {
-        return payload;
-      },
+  cv: {
+    subscribe: (parent: any, args: any, { pubSub }: any, info: any) => {
+      return pubSub.subscribe("cv");
     },
-    updateCv: {
-      subscribe: (parent:any, args:any, { pubSub }:any, info:any) => {
-        return pubSub.subscribe("updateCv");
-      },
-      resolve: (payload:any) => {
-        return payload;
-      },
+    resolve: (payload: any) => {
+      console.log(payload);
+      return payload;
     },
-    deletedCv: {
-      subscribe: (parent:any, args:any, { pubSub }:any, info:any) => {
-        return pubSub.subscribe("deletedCv");
-      },
-      resolve: (payload:any) => {
-        return payload;
-      },
-    },
-  };
+  },
+};

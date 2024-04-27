@@ -40,13 +40,12 @@ type User {
 }
 
 input CvAddInput {
-    name: String!
-    age: Int!
-    job: String!
-    userId: String!
-    skillIds: [String!]!
+  name: String!
+  age: Int!
+  job: String!
+  userId: String!
+  skillIds: [String!]!
 }
-
 
 input CvUpdateInput {
   name: String
@@ -57,15 +56,14 @@ input CvUpdateInput {
 }
 
 type Subscription {
-    cvUpdated: CvSubscriptionPayload!
+  cv: CvSubscriptionPayload!
 }
 type CvSubscriptionPayload {
-    Mutation: MutationOperationType!
-    cv: CV!
+  Mutation: MutationOperationType!
+  cv: CV!
 }
-enum MutationOperationType{
+enum MutationOperationType {
   UPDATE
   DELETE
   ADD
 }
-

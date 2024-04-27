@@ -4,6 +4,7 @@ import { db } from "./db/db";
 import fs from "fs";
 import { Query } from "./resolvers/Query";
 import { Mutation } from "./resolvers/Mutation";
+import { Subscription } from "./resolvers/subscription";
 
 const pubSub = createPubSub();
 const yoga = createYoga({
@@ -12,11 +13,11 @@ const yoga = createYoga({
     resolvers: {
       Query,
       Mutation,
+      Subscription,
     },
   }),
 
-
-  context: { db ,pubSub},
+  context: { db, pubSub },
 });
 
 const server = createServer(yoga);
