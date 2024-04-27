@@ -1,6 +1,7 @@
 {
   "dependencies": {
     "@graphql-tools/schema": "10.0.3",
+    "@nestjs/core": "^10.3.8",
     "@types/node": "^20.12.7",
     "cross-env": "^7.0.3",
     "graphql": "16.8.1",
@@ -13,6 +14,8 @@
   "main": "index.js",
   "devDependencies": {
     "@types/graphql": "^14.5.0",
+    "@prisma/client": "5.13.0",
+    "prisma": "5.13.0",
     "typescript": "^5.4.5"
   },
   "scripts": {
@@ -23,5 +26,6 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "description": ""
+  "description": "",
+  "build": "npx prisma db push && npx prisma generate && next build"
 }
