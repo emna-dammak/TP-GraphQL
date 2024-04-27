@@ -54,3 +54,16 @@ input CvUpdateInput {
   owner: String
   skillIds: [String!]
 }
+
+type Subscription {
+    cvUpdated: CvSubscriptionPayload!
+}
+type CvSubscriptionPayload {
+    Mutation: MutationOperationType!
+    cv: CV!
+}
+enum MutationOperationType{
+  UPDATE
+  DELETE
+  ADD
+}
